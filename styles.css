@@ -428,13 +428,15 @@ ul {
 }
 
 .store-badge .small {
-    font-size: 0.7rem;
-    opacity: 0.8;
+    font-size: 0.62rem;
+    opacity: 0.85;
+    letter-spacing: 0.2px;
 }
 
 .store-badge .large {
-    font-size: 1rem;
+    font-size: 0.88rem;
     font-weight: 600;
+    letter-spacing: 0.2px;
 }
 
 /* Feature Themes */
@@ -1192,7 +1194,7 @@ ul {
 
 /* About Section (Zigzag Redesign) */
 .about {
-    padding: 100px 0;
+    padding: 10px 0;
     background-color: white;
     /* Clean white bg as per image */
 }
