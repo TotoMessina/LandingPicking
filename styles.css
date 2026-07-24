@@ -454,6 +454,24 @@ ul {
     transition: background-color 0.3s ease;
 }
 
+/* Sticky Scroll Features Section */
+@media (min-width: 769px) {
+    .features.sticky-scroll-enabled {
+        position: relative;
+        height: 250vh;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .features.sticky-scroll-enabled .feature-container {
+        position: sticky;
+        top: 100px;
+        height: calc(100vh - 120px);
+        display: flex;
+        align-items: center;
+    }
+}
+
 /* Pill Tabs */
 .tabs-header.pills {
     display: inline-flex;
@@ -1683,8 +1701,4 @@ ul {
     .social-icons {
         justify-content: center;
     }
-}
-
-justify-content: center;
-}
 }

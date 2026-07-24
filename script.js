@@ -30,56 +30,116 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    tabButtons.forEach(button => {
+    let isManualClickScrolling = false;
+    let currentActiveTab = 0;
+
+    function switchTab(index, shouldScroll = false) {
+        if (index < 0 || index >= tabButtons.length) return;
+
+        const button = tabButtons[index];
+        const targetId = button.getAttribute('data-target');
+
+        // Remove active class from all buttons and panes
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabPanes.forEach(pane => pane.classList.remove('active'));
+
+        // Add active class to clicked button & pane
+        button.classList.add('active');
+        const targetPane = document.getElementById(targetId);
+        if (targetPane) targetPane.classList.add('active');
+
+        // Switch corresponding tab video/media
+        const tabMediaList = document.querySelectorAll('.tab-media');
+        tabMediaList.forEach(media => {
+            media.classList.remove('active');
+            if (media.tagName === 'VIDEO') {
+                media.pause();
+            }
+        });
+
+        const targetMedia = document.getElementById(`media-${targetId}`);
+        if (targetMedia) {
+            targetMedia.classList.add('active');
+            if (targetMedia.tagName === 'VIDEO') {
+                targetMedia.play().catch(() => {});
+            }
+        }
+
+        // Update Store download links for active tab
+        updateStoreLinks(targetId);
+
+        // Update Theme on parent .features section
+        const theme = button.getAttribute('data-theme');
+        const featuresSection = document.querySelector('.features');
+        if (theme && featuresSection) {
+            featuresSection.classList.remove('theme-blue', 'theme-pink', 'theme-green');
+            featuresSection.classList.add(theme);
+        }
+
+        // Update Glider Position
+        updateGlider(button);
+
+        // Scroll to corresponding position if clicked manually
+        if (shouldScroll && window.innerWidth > 768) {
+            const featuresSection = document.querySelector('.features.sticky-scroll-enabled');
+            if (featuresSection) {
+                const sectionTop = featuresSection.offsetTop;
+                const totalScrollable = featuresSection.offsetHeight - window.innerHeight;
+                const targetY = sectionTop + (index / (tabButtons.length - 1)) * totalScrollable;
+
+                isManualClickScrolling = true;
+                window.scrollTo({ top: targetY, behavior: 'smooth' });
+                setTimeout(() => { isManualClickScrolling = false; }, 800);
+            }
+        }
+    }
+
+    tabButtons.forEach((button, index) => {
         button.addEventListener('click', () => {
-            // Remove active class from all buttons and panes
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            tabPanes.forEach(pane => pane.classList.remove('active'));
-
-            // Add active class to clicked button
-            button.classList.add('active');
-
-            // Show target pane
-            const targetId = button.getAttribute('data-target');
-            const targetPane = document.getElementById(targetId);
-            if (targetPane) targetPane.classList.add('active');
-
-            // Switch corresponding tab video/media
-            const tabMediaList = document.querySelectorAll('.tab-media');
-            tabMediaList.forEach(media => {
-                media.classList.remove('active');
-                if (media.tagName === 'VIDEO') {
-                    media.pause();
-                }
-            });
-            const targetMedia = document.getElementById(`media-${targetId}`);
-            if (targetMedia) {
-                targetMedia.classList.add('active');
-                if (targetMedia.tagName === 'VIDEO') {
-                    targetMedia.play().catch(() => {});
-                }
-            }
-
-            // Update Store download links for active tab
-            updateStoreLinks(targetId);
-
-            // Update Theme on parent .features section
-            const theme = button.getAttribute('data-theme');
-            const featuresSection = document.querySelector('.features');
-            if (theme && featuresSection) {
-                // Remove old themes
-                featuresSection.classList.remove('theme-blue', 'theme-pink', 'theme-green');
-                // Add new theme
-                featuresSection.classList.add(theme);
-            }
-
-            // Update Glider Position
-            updateGlider(button);
+            currentActiveTab = index;
+            switchTab(index, true);
         });
     });
 
     // Initialize Store Links for active tab
     updateStoreLinks('distribuidores');
+
+    // Scroll-Driven Tab Progression Logic
+    const featuresSection = document.querySelector('.features');
+    if (featuresSection) {
+        featuresSection.classList.add('sticky-scroll-enabled');
+
+        function handleStickyScroll() {
+            if (window.innerWidth <= 768 || isManualClickScrolling) return;
+
+            const rect = featuresSection.getBoundingClientRect();
+            const totalScrollable = featuresSection.offsetHeight - window.innerHeight;
+
+            if (totalScrollable <= 0) return;
+
+            const scrolled = -rect.top;
+
+            if (scrolled >= 0 && scrolled <= totalScrollable) {
+                const progress = scrolled / totalScrollable;
+                let targetIndex = 0;
+
+                if (progress >= 0.66) {
+                    targetIndex = 2;
+                } else if (progress >= 0.33) {
+                    targetIndex = 1;
+                } else {
+                    targetIndex = 0;
+                }
+
+                if (targetIndex !== currentActiveTab) {
+                    currentActiveTab = targetIndex;
+                    switchTab(currentActiveTab, false);
+                }
+            }
+        }
+
+        window.addEventListener('scroll', handleStickyScroll, { passive: true });
+    }
 
     // Glider Logic
     const glider = document.querySelector('.tab-glider');
