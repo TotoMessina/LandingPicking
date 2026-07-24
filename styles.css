@@ -1,0 +1,1690 @@
+/* Global Styles - Light Theme */
+:root {
+    --primary-color: #2563eb;
+    /* Stronger blue for light bg */
+    --secondary-color: #10b981;
+    --bg-dark: #ffffff;
+    --bg-card: #f3f4f6;
+    --text-white: #1f2937;
+    /* Dark text */
+    --text-gray: #4b5563;
+    --font-main: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+section {
+    scroll-margin-top: 90px;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Image Sizing Constraints */
+.hero-img-element {
+    width: 100%;
+    max-width: 500px;
+    /* Limit size */
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.phone-img-element {
+    max-width: 300px;
+    /* Limit phone size */
+    width: 100%;
+    height: auto;
+    border-radius: 24px;
+    filter: none;
+    box-shadow: none;
+    animation: float 6s ease-in-out infinite;
+    object-fit: cover;
+}
+
+.tab-media {
+    display: none;
+    filter: none;
+    box-shadow: none;
+}
+.tab-media.active {
+    display: block;
+}
+
+.about-img-element {
+    width: 100%;
+    /* Removed max-width to allow full size */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    /* Soft shadow */
+    display: block;
+    /* Prevents bottom alignment gap */
+    transition: transform 0.3s ease;
+}
+
+.about-img-element:hover {
+    transform: scale(1.02);
+}
+
+/* Buttons */
+.btn-primary {
+    background: linear-gradient(90deg, #2563eb 0%, #3b82f6 100%);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    border: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+}
+
+.btn-outline {
+    border: 2px solid #2563eb;
+    color: #2563eb;
+    background: transparent;
+    padding: 10px 28px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-outline:hover {
+    background-color: #eff6ff;
+}
+
+/* Header - Floating Pill Style */
+.header {
+    background: linear-gradient(90deg, #4f46e5 0%, #2563eb 100%);
+    /* Blue/Purple Gradient */
+    padding: 10px 0;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 95%;
+    max-width: 1100px;
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.header-logo-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav a {
+    color: white;
+    /* White text for header */
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity 0.3s, transform 0.1s ease;
+}
+
+.nav a:hover {
+    opacity: 0.8;
+    color: white;
+    /* Keep white on hover */
+}
+
+.nav a:active {
+    transform: scale(0.95);
+    opacity: 0.7;
+}
+
+.separator {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 1rem;
+}
+
+.btn-header-cta {
+    background: white;
+    color: #2563eb;
+    padding: 8px 24px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.btn-header-cta:hover {
+    transform: scale(1.05);
+}
+
+/* Mobile Menu Button Override */
+.mobile-menu-btn {
+    color: white;
+    /* White on blue header */
+    display: none;
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Hero Section - Fullscreen Background */
+.hero {
+    padding: 0;
+    height: 100vh;
+    /* Full viewport height */
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-top: 0;
+    /* Override any margin */
+    overflow: hidden;
+    /* Ensure no scrollbars if images are slightly off */
+}
+
+.hero-slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+    z-index: 2;
+}
+
+/* Ensure content is above overlay */
+.hero-content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+}
+
+.hero-text {
+    max-width: 600px;
+    text-align: left;
+}
+
+.hero-text h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    color: white;
+    /* White text on image */
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    background: none;
+    -webkit-text-fill-color: white;
+}
+
+.hero-text p {
+    font-size: 1.25rem;
+    color: white;
+    margin-bottom: 35px;
+    max-width: 550px;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.hero-btn {
+    background: #2563eb;
+    /* Strong blue */
+    border: 2px solid #2563eb;
+    padding: 14px 34px;
+    font-size: 1.1rem;
+}
+
+.hero-btn:hover {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+}
+
+/* Image Placeholder Removal / Reset */
+.hero-image,
+.image-placeholder,
+.hero-img-element {
+    display: none;
+    /* Hide old elements if present */
+}
+
+
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Features Section - Redesign */
+.features {
+    padding: 100px 0;
+    transition: background-color 0.5s ease;
+}
+
+/* Dynamic Object Configuration using CSS Variables based on class */
+.features.theme-blue {
+    --current-theme: #2563eb;
+    --bg-light: #eff6ff;
+}
+
+.features.theme-pink {
+    --current-theme: #e11d48;
+    --bg-light: #fff1f2;
+}
+
+.features.theme-green {
+    --current-theme: #10b981;
+    --bg-light: #ecfdf5;
+}
+
+.feature-container {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+/* Left Column: Phone & Badges */
+.feature-image-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.phone-mockup {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.phone-img-element {
+    max-width: 320px;
+    height: auto;
+    filter: none !important;
+    box-shadow: none !important;
+    animation: float 6s ease-in-out infinite;
+}
+
+.download-badges {
+    display: flex;
+    gap: 15px;
+}
+
+.store-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: black;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    text-align: left;
+    text-decoration: none;
+}
+
+.store-badge:hover {
+    transform: translateY(-2px);
+}
+
+.store-badge .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.store-badge-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.store-badge .text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.store-badge .small {
+    font-size: 0.7rem;
+    opacity: 0.8;
+}
+
+.store-badge .large {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Feature Themes */
+.features.theme-blue {
+    --current-theme: #2563eb;
+}
+
+.features.theme-pink {
+    --current-theme: #ec4899;
+}
+
+.features.theme-green {
+    --current-theme: #10b981;
+}
+
+.features {
+    transition: background-color 0.3s ease;
+}
+
+/* Pill Tabs */
+.tabs-header.pills {
+    display: inline-flex;
+    background: transparent;
+    padding: 5px;
+    border-radius: 50px;
+    gap: 0;
+    margin-bottom: 40px;
+    position: relative;
+    /* For glider positioning */
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tab-glider {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    height: calc(100% - 10px);
+    background-color: var(--current-theme);
+    border-radius: 40px;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    /* Smooth spring-like effect */
+    z-index: 1;
+}
+
+.feature-content-col .tab-btn {
+    background: transparent;
+    color: #6b7280;
+    padding: 10px 25px;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+    /* Above glider */
+    transition: color 0.3s ease;
+    border: 0px;
+}
+
+/* Active State uses the dynamic theme color */
+.feature-content-col .tab-btn.active {
+    background: transparent;
+    /* Remove fixed background */
+    color: white;
+    /* Desktop: White text on Colored Glider */
+    box-shadow: none;
+    /* Shadow is on glider now */
+}
+
+/* Content Typography */
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--current-theme, #2563eb);
+    /* Matches active theme */
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+.title-logo-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+}
+
+.section-desc {
+    font-size: 1.2rem;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 50px;
+    max-width: 90%;
+}
+
+/* Feature Row (Horizontal Items) */
+.feature-row {
+    display: flex;
+    gap: 30px;
+}
+
+.feature-item {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background-color: var(--current-theme, #2563eb);
+    color: white;
+    font-size: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 10px;
+}
+
+.feature-item h3.logo {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.header-logo-img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+    /* Optional: adds a nice clean look on colored backgrounds or just distinct separation */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item p {
+    font-size: 0.95rem;
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+/* Animations */
+.tab-pane {
+    display: none;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+/* Pricing Section */
+.pricing {
+    padding: 100px 0;
+    background-color: white;
+    /* Clean white bg */
+}
+
+.pricing h2 {
+    text-align: left;
+    font-size: 2rem;
+    margin-bottom: 50px;
+    color: #111827;
+    font-weight: 400;
+}
+
+.pricing h2 em {
+    font-weight: 800;
+    font-style: italic;
+}
+
+.pricing-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    /* Responsive wrap */
+}
+
+/* Card Common Styles */
+.pricing-card {
+    border-radius: 20px;
+    width: 350px;
+    overflow: hidden;
+    /* For gradient header */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    /* Soft shadow */
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border: 1px solid #f3f4f6;
+}
+
+/* Header Content (Gradient Area) */
+.card-header-content {
+    padding: 40px 30px;
+    color: #1f2937;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Specific Card Styles */
+.card-inicial .card-header-content {
+    background: linear-gradient(180deg, #dbeafe 0%, #ffffff 100%);
+    /* Light blue fade */
+}
+
+.card-premium .card-header-content {
+    background: linear-gradient(135deg, #d4af37 0%, #6366f1 100%);
+    /* Gold to Purple */
+    color: #1f2937;
+    /* Reset text color if needed, but image shows dark numbers */
+}
+
+/* Specific overrides for Premium Card text if needed based on image,
+   but assuming dark text for visibility on light parts of gradient.
+   Wait, the premium card in image has black button, so dark UI?
+   Looking at image: Premium has gold/purple top, black button. Price is large. */
+
+.card-premium h3 {
+    color: #1f2937;
+}
+
+.pricing-card h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: #4b5563;
+}
+
+.price {
+    font-size: 3.5rem;
+    font-weight: 400;
+    /* Thinner weight like image */
+    margin-bottom: 10px;
+    color: #111827;
+    letter-spacing: -1px;
+}
+
+.price .period {
+    font-size: 1rem;
+    color: #6b7280;
+    font-weight: 400;
+}
+
+.card-desc {
+    font-size: 0.95rem;
+    color: #6b7280;
+    margin-bottom: 25px;
+    line-height: 1.4;
+    min-height: 40px;
+    /* Align buttons */
+}
+
+/* Buttons */
+.btn-card {
+    width: 100%;
+    padding: 12px 0;
+    text-align: center;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: transform 0.2s;
+    text-decoration: none;
+    display: block;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-card:hover {
+    transform: translateY(-2px);
+}
+
+.btn-white {
+    background: white;
+    color: #1f2937;
+    border: 1px solid #e5e7eb;
+}
+
+.btn-black {
+    background: black;
+    color: white;
+    border: none;
+}
+
+
+/* Features List */
+.card-features-content {
+    padding: 30px;
+    background: #ffffff;
+    /* Ensure white bottom */
+    flex-grow: 1;
+    /* Push footer down */
+}
+
+.card-features-content h4 {
+    font-size: 1rem;
+    color: #6b7280;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.pricing-features li {
+    margin-bottom: 12px;
+    color: #374151;
+    /* Darker gray text */
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.pricing-features li::before {
+    content: '✓';
+    color: #111827;
+    /* Dark check */
+    background: transparent;
+    border: none;
+    width: auto;
+    height: auto;
+    font-size: 1rem;
+    font-weight: 900;
+    display: inline-block;
+    border-radius: 0;
+}
+
+/* Trial Banner */
+.trial-banner {
+    max-width: 740px;
+    /* Width of two cards + gap */
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    padding: 25px 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f3f4f6;
+    display: flex;
+    justify-content: center;
+}
+
+.banner-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.trial-banner h3 {
+    font-size: 1.4rem;
+    color: #1f2937;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+
+.trial-banner h3 em {
+    font-style: italic;
+    font-weight: 800;
+}
+
+.trial-highlight {
+    font-size: 1.5rem;
+    color: #ca8a04;
+    /* Gold color */
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.btn-banner {
+    background: black;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+
+.btn-banner:hover {
+    transform: scale(1.05);
+}
+
+/* Clean up old classes if present via override or specific targeting */
+.badge {
+    display: none;
+}
+
+/* Social Proof Section (Stats Redesign) */
+.social-proof-section {
+    padding: 80px 0;
+    background-color: #f9fafb;
+    /* Light gray bg */
+}
+
+/* Testimonials Grid */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr;
+    /* Diego wider */
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+@media (max-width: 900px) {
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Base Card Style */
+.testimonial-card,
+.metric-card {
+    background: white;
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover,
+.metric-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Profile Header */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.profile-placeholder {
+    width: 60px;
+    height: 60px;
+    background-color: #e5e7eb;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #6b7280;
+    font-size: 1.2rem;
+}
+
+/* Specific Profile Images (Simulated with background colors if wanted, sticking to placeholder for now) */
+
+.profile-info h3 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 2px;
+}
+
+.profile-info .age {
+    font-weight: 400;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+/* Roles */
+.role {
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+    /* Spacing before body */
+}
+
+.role-blue {
+    color: #2563eb;
+}
+
+.role-pink {
+    color: #e11d48;
+}
+
+.role-green {
+    color: #10b981;
+}
+
+/* Testimonial Body */
+.testimonial-body p {
+    font-size: 0.95rem;
+    color: #374151;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.testimonial-body em {
+    font-weight: 700;
+    font-style: italic;
+    color: #111827;
+}
+
+/* Footer */
+.testimonial-footer {
+    font-size: 0.85rem;
+    color: #9ca3af;
+    font-style: italic;
+    text-align: right;
+    margin-top: auto;
+}
+
+.testimonial-footer.link {
+    text-align: right;
+}
+
+.testimonial-footer.link a {
+    color: #111827;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Metrics Grid (Stats) */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+@media (max-width: 768px) {
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.metric-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.metric-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.metric-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 5px;
+}
+
+.metric-card h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    font-style: italic;
+    margin-bottom: 15px;
+    color: #111827;
+}
+
+.metric-card p {
+    font-size: 0.95rem;
+    color: #4b5563;
+    line-height: 1.5;
+}
+
+.metric-card em {
+    font-weight: 700;
+    font-style: italic;
+    color: #111827;
+}
+
+/* Partners */
+.partners {
+    padding: 60px 0;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.partners p {
+    color: var(--text-gray);
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.logos-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.logo-box {
+    background: white;
+    width: 200px;
+    /* Fixed uniform width */
+    height: 100px;
+    /* Fixed uniform height */
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+    border: 1px solid #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.logo-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: grayscale(0%);
+    /* Keep color as per generated images */
+}
+
+/* ... existing partner styles if any ... */
+
+/* Testimonial Modal */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #9ca3af;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    color: #1f2937;
+}
+
+.modal-profile-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.modal-quote {
+    font-size: 1.1rem;
+    color: #374151;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+.partners p {
+    color: var(--text-gray);
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.logos-grid {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    opacity: 0.8;
+}
+
+
+
+/* About Section (Zigzag Redesign) */
+.about {
+    padding: 100px 0;
+    background-color: white;
+    /* Clean white bg as per image */
+}
+
+/* Individual Rows */
+.about-row {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    margin-bottom: 100px;
+    /* Space between rows */
+}
+
+.about-row:last-child {
+    margin-bottom: 0;
+}
+
+.about-row.reverse {
+    flex-direction: row-reverse;
+}
+
+@media (max-width: 900px) {
+
+    .about-row,
+    .about-row.reverse {
+        flex-direction: column-reverse;
+        /* Text on top of image usually, or Image top? Let's check standard. 
+        Usually Text first is better for reading context, or Image first for visual. 
+        In zigzag, stacking vertically usually puts Image Top or Text Top consistently.
+        Let's do Text Top (content first) -> so flex-direction: column-reverse (if html is text then image) no wait.
+        HTML is Text then Image. 
+        column-reverse would put Image Top.
+        column would put Text Top. 
+        Let's go for column (Text Top). */
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+}
+
+/* Columns */
+.about-text-col {
+    flex: 1;
+}
+
+.about-image-col {
+    flex: 1.2;
+    /* Images are quite wide in reference */
+}
+
+/* Typography matching image */
+.about-text-col h2 {
+    font-size: 2.2rem;
+    font-weight: 300;
+    /* Thin */
+    font-style: italic;
+    /* Italic headers */
+    color: #111827;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: right;
+    /* Default for first row? Check image. 
+    Row 1: Title Right. Row 2: Title Right (relative to text block). 
+    Actually, let's look at the image again.
+    Row 1 Text: Right aligned? No, looks like left aligned text block, or right aligned relative to page? 
+    It looks like the text block content is aligned towards the image.
+    Row 1 (Text Left, Image Right): Text aligned Right? Or Left? 
+    In the image provided: "QUIENES SOMOS" is aligned to the right of the text block?
+    Actually it looks like standard styling. Let's stick to standard left align for readability unless specifically requested, 
+    but the title in image "QUIENES SOMOS" is italic.
+    Let's align text towards the center gap? 
+    Row 1 (Text | Image) -> Text align right.
+    Row 2 (Image | Text) -> Text align left.
+    Let's try that for sophistication. */
+}
+
+.about-row .about-text-col {
+    text-align: right;
+}
+
+.about-row.reverse .about-text-col {
+    text-align: left;
+}
+
+@media (max-width: 900px) {
+
+    .about-row .about-text-col,
+    .about-row.reverse .about-text-col {
+        text-align: center;
+    }
+}
+
+
+.about-text-col p {
+    font-size: 1.05rem;
+    color: #4b5563;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.about-text-col em {
+    font-weight: 700;
+    font-style: italic;
+    color: #1f2937;
+}
+
+/* Images */
+.about-img-element {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease;
+}
+
+.about-img-element:hover {
+    transform: scale(1.02);
+}
+
+/* Contact Section (Help Center Design) */
+.contact-section {
+    padding: 100px 0;
+    background-color: white;
+    text-align: center;
+}
+
+.contact-title {
+    color: #0000FF;
+    /* Blue Title */
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.contact-subtitle {
+    color: #1f2937;
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+}
+
+.contact-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 50px auto;
+    /* Spacing before button */
+    display: inline-block;
+    /* To center the list block itself */
+    text-align: left;
+    /* Text alignment within lines */
+}
+
+.contact-benefits li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 25px;
+    font-size: 1.05rem;
+    color: #374151;
+}
+
+.check-icon {
+    color: #0000FF;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.contact-benefits em {
+    font-weight: 800;
+    font-style: italic;
+    color: #1f2937;
+}
+
+/* Large CTA Button */
+.btn-contact-large {
+    display: inline-block;
+    background-color: #0000FF;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 18px 50px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(0, 0, 255, 0.25);
+    transition: transform 0.2s, box-shadow 0.2s;
+    max-width: 100%;
+    box-sizing: border-box;
+    word-break: break-word;
+    text-align: center;
+}
+
+.btn-contact-large:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0, 0, 255, 0.35);
+}
+
+@media (max-width: 576px) {
+    .btn-contact-large {
+        font-size: 1rem;
+        padding: 14px 24px;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .contact-subtitle br {
+        display: none;
+    }
+}
+
+/* Footer */
+.footer {
+    padding: 30px 0;
+    border-top: 1px solid #e5e7eb;
+    background-color: white;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.copyright p {
+    color: #9ca3af;
+    /* Gray */
+    font-size: 0.85rem;
+    line-height: 1.5;
+    text-align: left;
+    margin: 0;
+}
+
+/* Responsive Design Improvements */
+@media (max-width: 900px) {
+    .header .btn-header-cta {
+        display: none;
+        /* Hide CTA on smaller tablets too to avoid crowding */
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Header */
+    /* Header */
+    /* Header */
+    .header .nav {
+        /* Mobile Menu Base State */
+        position: fixed;
+        top: 70px;
+        /* Header height */
+        left: 0;
+        width: 100%;
+        background: rgba(37, 99, 235, 0.98);
+        /* Primary Blue */
+        backdrop-filter: blur(10px);
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transform: translateY(-100%);
+        /* Start hidden above */
+        opacity: 0;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        pointer-events: none;
+        z-index: 999;
+        display: flex;
+        /* Always flex, just hidden visually */
+    }
+
+    .header .nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .header .nav a {
+        font-size: 1.1rem;
+        font-weight: 600;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        border-radius: 8px;
+        color: white;
+        /* White text */
+
+        /* Animation Init State */
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    /* Staggered Animation on Open */
+    .header .nav.active a {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .header .nav.active a:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+
+    .header .nav.active a:nth-child(3) {
+        transition-delay: 0.15s;
+    }
+
+    /* Skip separators if any, or just index */
+    .header .nav.active a:nth-child(5) {
+        transition-delay: 0.2s;
+    }
+
+    .header .nav.active a:nth-child(7) {
+        transition-delay: 0.25s;
+    }
+
+    .header .nav.active a:nth-child(9) {
+        transition-delay: 0.3s;
+    }
+
+    .header .nav a:active {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(0.98);
+    }
+
+    .header .nav .separator {
+        display: none;
+        /* Hide pipes on mobile */
+    }
+
+    /* Hamburger Button */
+    .mobile-menu-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 20px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 1000;
+        padding: 0;
+    }
+
+    .mobile-menu-btn span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: white;
+        /* White icon lines */
+        border-radius: 3px;
+        transition: all 0.3s ease-in-out;
+        transform-origin: left center;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Hamburger Animation to 'X' */
+    .mobile-menu-btn.active span:nth-child(1) {
+        transform: rotate(45deg);
+        top: 0px;
+        left: 3px;
+    }
+
+    .mobile-menu-btn.active span:nth-child(2) {
+        opacity: 0;
+        width: 0;
+    }
+
+    .mobile-menu-btn.active span:nth-child(3) {
+        transform: rotate(-45deg);
+        top: 18px;
+        left: 3px;
+    }
+
+    .logo img {
+        height: 35px;
+        /* Smaller logos on mobile */
+    }
+
+    /* Hero */
+    .hero h1 {
+        font-size: 2.2rem;
+        /* Smaller title */
+    }
+
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    .hero-text {
+        margin-bottom: 30px;
+        width: 100%;
+    }
+
+    .hero-text p {
+        margin: 0 auto 30px auto;
+    }
+
+    .hero-image {
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* Features */
+    .feature-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .feature-image-col {
+        width: 100%;
+    }
+
+    .tabs-header.pills {
+        flex-direction: column;
+        width: 100%;
+        background: transparent;
+        padding: 0;
+        gap: 10px;
+    }
+
+    .tab-btn {
+        width: 100%;
+        border-radius: 30px;
+        background: #f3f4f6;
+        padding: 12px;
+        z-index: 2;
+        /* Ensure clicks work */
+    }
+
+    .feature-content-col .tab-btn.active {
+        background: var(--current-theme);
+        /* Use theme color for background */
+        color: white !important;
+        /* Ensure text is white */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .tab-glider {
+        display: none;
+        /* Disable glider on mobile column layout */
+    }
+
+    .feature-row {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .feature-item {
+        text-align: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Pricing */
+    .pricing-grid {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .pricing-card {
+        width: 100%;
+    }
+
+    /* Testimonials & Stats */
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        /* Stack cards */
+    }
+
+    .metrics-grid {
+        grid-template-columns: 1fr;
+        /* Stack metrics */
+        gap: 30px;
+    }
+
+    /* Partners */
+    .logos-grid {
+        gap: 30px;
+    }
+
+    .logo-box img {
+        max-height: 40px;
+        /* Smaller partner logos */
+    }
+
+    /* Footer */
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .copyright p {
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+}
+
+justify-content: center;
+}
+}

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Picking Up! - La revolución digital del comercio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Floating Header -->
+    <header class="header floating-header">
+        <div class="container header-container">
+            <div class="logo">
+                <img src="Logo1.jpg" alt="Logo 1" class="header-logo-img">
+                <img src="Logo2.jpg" alt="Logo 2" class="header-logo-img">
+                <img src="Logo3.jpg" alt="Logo 3" class="header-logo-img">
+            </div>
+            <nav class="nav pills-nav">
+                <a href="#inicio">Inicio</a>
+                <span class="separator">|</span>
+                <a href="#funcionalidades">Picking Up!</a>
+                <span class="separator">|</span>
+                <a href="#nosotros">Quienes somos</a>
+                <span class="separator">|</span>
+                <a href="#contacto">Contacto</a>
+            </nav>
+            <a href="https://www.pickingup.com.ar/pickingup_tienda_app.html" class="btn-header-cta">¡Descargá la
+                app!</a>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section with Background Image -->
+    <section id="inicio" class="hero fullscreen-hero">
+        <div class="hero-slideshow">
+            <div class="slide active" style="background-image: url('hero1.png');"></div>
+            <div class="slide" style="background-image: url('hero2.png');"></div>
+            <div class="slide" style="background-image: url('hero3.png');"></div>
+            <div class="slide" style="background-image: url('hero4.png');"></div>
+        </div>
+        <div class="hero-overlay"></div> <!-- Separate overlay for consistent readability -->
+
+        <div class="container hero-content">
+            <div class="hero-text full-width-text slide-up delay-100">
+                <h1>Todo el comercio de tu barrio,<br>en una sola plataforma.</h1>
+                <p>Tres aplicaciones integradas que permiten vender, comprar y repartir sin intermediarios.</p>
+                <a href="#funcionalidades" class="btn-primary hero-btn scale-in delay-200">Conocé el ecosistema de
+                    Picking Up</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Features Section -->
+    <section id="funcionalidades" class="features theme-blue">
+        <div class="container feature-container">
+            <!-- Left Side: Phone Mockup -->
+            <div class="feature-image-col slide-up delay-200">
+                <div class="phone-mockup">
+                    <!-- Video / Media para Comerciantes -->
+                    <video id="media-distribuidores" class="tab-media phone-img-element active" autoplay loop muted playsinline>
+                        <source src="comerciantes.mp4" type="video/mp4">
+                        <img src="celular.png" alt="App Interface Comerciantes" class="phone-img-element">
+                    </video>
+                    <!-- Video / Media para Consumidores -->
+                    <video id="media-consumidores" class="tab-media phone-img-element" autoplay loop muted playsinline>
+                        <source src="consumidores.mp4" type="video/mp4">
+                        <img src="celular.png" alt="App Interface Consumidores" class="phone-img-element">
+                    </video>
+                    <!-- Video / Media para Repartidores -->
+                    <video id="media-repartidores" class="tab-media phone-img-element" autoplay loop muted playsinline>
+                        <source src="repartidores.mp4" type="video/mp4">
+                        <img src="celular.png" alt="App Interface Repartidores" class="phone-img-element">
+                    </video>
+                </div>
+                <!-- Download Badges -->
+                <div class="download-badges">
+                    <a href="https://tienda.pickingup.com.ar" target="_blank" rel="noopener noreferrer" class="store-badge" id="btn-google-play">
+                        <span class="icon"><img src="googleplay.webp" alt="Google Play" class="store-badge-img"></span>
+                        <div class="text">
+                            <span class="small">Disponible en</span>
+                            <span class="large">Google Play</span>
+                        </div>
+                    </a>
+                    <a href="https://tienda.pickingup.com.ar" target="_blank" rel="noopener noreferrer" class="store-badge" id="btn-app-store">
+                        <span class="icon"><img src="apple.png" alt="App Store" class="store-badge-img"></span>
+                        <div class="text">
+                            <span class="small">Disponible en</span>
+                            <span class="large">App Store</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Side: Content -->
+            <div class="feature-content-col">
+                <div class="tabs-header pills">
+                    <button class="tab-btn active" data-target="distribuidores" data-theme="theme-blue">PARA
+                        COMERCIANTES</button>
+                    <button class="tab-btn" data-target="consumidores" data-theme="theme-pink">PARA
+                        CONSUMIDORES</button>
+                    <button class="tab-btn" data-target="repartidores" data-theme="theme-green">PARA
+                        REPARTIDORES</button>
+                    <div class="tab-glider"></div>
+                </div>
+
+                <div class="tabs-content">
+                    <!-- Distribuidores Pane (Blue) -->
+                    <div id="distribuidores" class="tab-pane active fade-in">
+                        <h2 class="section-title">
+                            <img src="Logo1.jpg" alt="Logo Picking Up! Tienda" class="title-logo-img">
+                            PICKING UP! TIENDA
+                        </h2>
+                        <p class="section-desc">Tu propia herramienta digital para que empieces a vender más de forma
+                            simple, desde tu celular y sin pagar comisiones.</p>
+
+                        <div class="feature-row">
+                            <div class="feature-item">
+                                <div class="icon-circle">📦</div>
+                                <h3>Crea tu catálogo</h3>
+                                <p>Subir tus productos es el primer paso para crear tu propia tienda online y que tus
+                                    clientes vean todo lo que ofreces.</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="icon-circle">✨</div>
+                                <h3>Armá promociones</h3>
+                                <p>Nuestra herramienta te da el poder de crear ofertas, descuentos y combos para tus
+                                    clientes en segundos</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="icon-circle">📲</div>
+                                <h3>Recibí pedidos</h3>
+                                <p>Enterate de cada nueva venta al instante, prepará el pedido y organiza la entrega
+                                    desde la app.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Consumidores Pane (Pink) -->
+                    <div id="consumidores" class="tab-pane">
+                        <h2 class="section-title">
+                            <img src="Logo2.jpg" alt="Logo Picking Up!" class="title-logo-img">
+                            PICKING UP!
+                        </h2>
+                        <p class="section-desc">Todos los comercios de tu barrio en una sola app. Encontrá negocios de
+                            diferentes rubros y hacé tus compras con la opción de retirar tu pedido o recibirlo donde
+                            estés.</p>
+
+                        <div class="feature-row">
+                            <div class="feature-item">
+                                <div class="icon-circle">💲</div>
+                                <h3>Comprá sin sobreprecios</h3>
+                                <p>Pagá exactamente lo mismo que en el local, sin costos ocultos.</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="icon-circle">🔔</div>
+                                <h3>Recibí ofertas</h3>
+                                <p>Activá las notificaciones de tus comercios
+                                    favoritos y descubrí en la sección Novedades las últimas promociones, lanzamientos y
+                                    descuentos.</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="icon-circle">💬</div>
+                                <h3>Hablá con el comercio</h3>
+                                <p>Una vez que comprás, comunicate con el local por WhatsApp para coordinar o consultar
+                                    sobre tu pedido.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Repartidores Pane (Green) -->
+                    <div id="repartidores" class="tab-pane">
+                        <h2 class="section-title">
+                            <img src="Logo3.jpg" alt="Logo Picking Up! Repartiendo" class="title-logo-img">
+                            PICKING UP! REPARTIENDO
+                        </h2>
+                        <p class="section-desc">Es la app para generar ingresos extra entregando pedidos para los
+                            comercios de tu barrio.</p>
+
+                        <div class="feature-row">
+                            <div class="feature-item">
+                                <div class="icon-circle">⏰</div>
+                                <h3>Flexibilidad total</h3>
+                                <p>Elegí tus propios horarios, administrá tus tiempos y decidí en qué zona repartir.</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="icon-circle">🚲</div>
+                                <h3>Sin vehículo obligatorio</h3>
+                                <p>Podes entregar caminando, en bici o como quieras.</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="icon-circle">💵</div>
+                                <h3>Ganancia inmediata</h3>
+                                <p>Cobrá cada pedido una vez finalizada la entrega.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Social Proof Section (Testimonials + Stats) -->
+    <section class="social-proof-section">
+        <div class="container">
+
+            <!-- Row 2: Stats Metrics -->
+            <div class="metrics-grid">
+                <div class="metric-card fade-in delay-100">
+                    <div class="metric-icon">🏪</div>
+                    <div class="metric-number">+1,5k</div>
+                    <h3>Comercios adheridos</h3>
+                    <p>Negocios barriales como kioscos, almacenes, librerías, fiambrerías, etc. <em>ya forman parte de
+                            Picking Up!</em></p>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">👣</div>
+                    <div class="metric-number">+1500</div>
+                    <h3>Vecinos repartiendo</h3>
+                    <p>Muchos vecinos ya comenzaron a repartir y cobrar en el momento. <em>¡Animate vos también!</em>
+                    </p>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">👥</div>
+                    <div class="metric-number">+3,5k</div>
+                    <h3>Usuarios en Picking Up!</h3>
+                    <p>Picking Up! es parte del día a día de una gran cantidad de barrios. <em>¡Sumate!</em></p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Partners / Clients -->
+    <section class="partners">
+        <div class="container">
+            <p>Empresas con las que trabajamos</p>
+            <div class="logos-grid">
+                <!-- Logos -->
+                <div class="logo-box">
+                    <img src="partner1.png" alt="Partner 1">
+                </div>
+                <div class="logo-box">
+                    <img src="partner2.png" alt="Partner 2">
+                </div>
+                <div class="logo-box">
+                    <img src="partner3.png" alt="Partner 3">
+                </div>
+                <div class="logo-box">
+                    <img src="partner4.png" alt="Partner 4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us (Zigzag Layout) -->
+    <section id="nosotros" class="about">
+        <div class="container">
+
+            <!-- Row 1: Quienes Somos -->
+            <div class="about-row slide-up delay-100">
+                <div class="about-text-col">
+                    <h2>QUIENES SOMOS</h2>
+                    <p>Picking Up! nace porque creemos que la tecnología debe fortalecer al comercio local y no
+                        reemplazarlo. Creamos un ecosistema donde comerciantes, consumidores y repartidores trabajan
+                        conectados para impulsar la economía de cercanía.</p>
+                </div>
+                <div class="about-image-col">
+                    <img src="nosotros3.png" alt="Logos de Picking Up!" class="about-img-element">
+                </div>
+            </div>
+
+            <!-- Row 2: Nuestro Propósito -->
+            <div class="about-row reverse slide-up delay-200">
+                <div class="about-text-col">
+                    <h2>NUESTRO PROPÓSITO</h2>
+                    <p>Fortalecer el comercio de barrio mediante un ecosistema tecnológico que conecte comercios,
+                        consumidores y repartidores, generando oportunidades, impulsando el crecimiento local y
+                        preservando la cercanía que hace única a cada comunidad.</p>
+                </div>
+                <div class="about-image-col">
+                    <img src="nosotros1.png" alt="Equipo Picking Up!" class="about-img-element">
+                </div>
+            </div>
+
+                        <!-- Row 1: Testimonials -->
+            <div class="testimonials-grid">
+                <!-- Large Card: Diego -->
+                <div class="testimonial-card card-large slide-up delay-100">
+                    <div class="profile-header">
+                        <div class="profile-img-container">
+                            <!-- Placeholder -->
+                            <div class="profile-placeholder">DC</div>
+                        </div>
+                        <div class="profile-info">
+                            <h3>Diego Crespo <span class="age">47 años</span></h3>
+                            <p class="role role-blue">Comerciante Picking Up! Tienda</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-body">
+                        <p>Gracias por escuchar las necesidades del comerciante. <em>Poder comprar y vender desde una
+                                misma app</em> nos resuelve tener que descargar diferentes con las mismas funciones.</p>
+                        <p><em>Un antes y un después.</em> Cambiar a esta aplicación fue dejar de pensar en pagar
+                            comisiones altas y solo enfocarme en mi negocio.</p>
+                    </div>
+                    <div class="testimonial-footer">
+                        San Justo, La Matanza - Buenos Aires, Argentina
+                    </div>
+                </div>
+
+                <!-- Small Card: María -->
+                <div class="testimonial-card card-small">
+                    <div class="profile-header">
+                        <div class="profile-img-container">
+                            <div class="profile-placeholder">MR</div>
+                        </div>
+                        <div class="profile-info">
+                            <h3>María Ramirez</h3>
+                            <span class="age">53 años</span>
+                        </div>
+                    </div>
+                    <p class="role role-pink">Usuario Picking Up!</p>
+                    <div class="testimonial-body">
+                        <p>Recién usando Picking Up! caí en cuenta de lo caro que estaba pagando antes con otras apps.
+                            <em>Mi favorita sin dudas.</em>
+                        </p>
+                    </div>
+                    <div class="testimonial-footer link">
+                        <a href="#">Ver más →</a>
+                    </div>
+                </div>
+
+                <!-- Small Card: Camila -->
+                <div class="testimonial-card card-small">
+                    <div class="profile-header">
+                        <div class="profile-img-container">
+                            <div class="profile-placeholder">CS</div>
+                        </div>
+                        <div class="profile-info">
+                            <h3>Camila Sttorza</h3>
+                            <span class="age">24 años</span>
+                        </div>
+                    </div>
+                    <p class="role role-green">Repartidora Picking Up!</p>
+                    <div class="testimonial-body">
+                        <p>Me sumé a repartir en diciembre y me resultó rentable, <em>las distancias son cortas y el
+                                pago fue en el momento.</em></p>
+                    </div>
+                    <div class="testimonial-footer link">
+                        <a href="#">Ver más →</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact-section">
+        <div class="container">
+            <h2 class="contact-title fade-in">¿CÓMO PODEMOS AYUDARTE?</h2>
+
+            <p class="contact-subtitle fade-in delay-100">Contactate con nuestro soporte para realizar tus
+                consultas</p>
+
+            <a href="https://ticketspickingup.vercel.app/" class="btn-contact-large">¡Contactate con nosotros!</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <!-- Left: Copyright -->
+            <div class="copyright">
+                <p>2026 &copy; Copyright by PickingUp! &reg; -<br>Todos los derechos reservados.</p>
+            </div>
+
+            <!-- Center: Back to Top -->
+            <div class="footer-center">
+                <a href="#inicio" class="back-to-top">Volver al inicio</a>
+            </div>
+
+            <!-- Right: Social Icons -->
+            <div class="social-icons">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/5491140604798" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                        </path>
+                    </svg>
+                </a>
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/pickingup.ar/" aria-label="Instagram" target="_blank"
+                    rel="noopener noreferrer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <!-- LinkedIn -->
+                <a href="https://ar.linkedin.com/company/picking-up" aria-label="LinkedIn" target="_blank"
+                    rel="noopener noreferrer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@pickingup.ar?lang=es" aria-label="TikTok" target="_blank"
+                    rel="noopener noreferrer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Testimonial Modal -->
+    <div id="testimonial-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-body-content">
+                <!-- Content injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
