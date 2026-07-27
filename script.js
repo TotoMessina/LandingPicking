@@ -229,6 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'María Ramirez': {
             role: 'Usuario Picking Up!',
             roleClass: 'role-pink',
+            image: 'testimonio2.jpeg',
             initial: 'MR',
             age: '53 años',
             text: `
@@ -241,6 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'Camila Sttorza': {
             role: 'Repartidora Picking Up!',
             roleClass: 'role-green',
+            image: 'testimonio3.png',
             initial: 'CS',
             age: '24 años',
             text: `
@@ -262,7 +264,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data) {
                 modalBody.innerHTML = `
                     <div class="modal-profile-header">
-                        <div class="profile-placeholder" style="width: 70px; height: 70px; font-size: 1.5rem;">${data.initial}</div>
+                        <div class="profile-img-container" style="width: 70px; height: 70px;">
+                            <img src="${data.image}" alt="${cleanName}" class="profile-img">
+                        </div>
                         <div>
                             <h3 style="margin:0; font-size: 1.4rem;">${cleanName} <span style="font-weight:400; font-size:0.9rem; color:#6b7280;">${data.age}</span></h3>
                             <p class="${data.roleClass}" style="margin:0; font-weight:700;">${data.role}</p>

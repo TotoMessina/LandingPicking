@@ -376,7 +376,9 @@ ul {
 }
 
 .phone-img-element {
-    max-width: 320px;
+    max-width: 420px;
+    max-height: calc(100vh - 160px);
+    width: 100%;
     height: auto;
     filter: none !important;
     box-shadow: none !important;
@@ -930,6 +932,23 @@ ul {
     margin-bottom: 20px;
 }
 
+.profile-img-container {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #e5e7eb;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 .profile-placeholder {
     width: 60px;
     height: 60px;
@@ -942,8 +961,6 @@ ul {
     color: #6b7280;
     font-size: 1.2rem;
 }
-
-/* Specific Profile Images (Simulated with background colors if wanted, sticking to placeholder for now) */
 
 .profile-info h3 {
     font-size: 1.1rem;
@@ -1634,8 +1651,8 @@ ul {
     }
 
     .phone-img-element {
-        max-width: 170px;
-        max-height: 25vh;
+        max-width: 230px;
+        max-height: 32vh;
     }
 
     .download-badges {
