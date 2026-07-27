@@ -353,24 +353,25 @@ ul {
 }
 
 .feature-container {
-    max-width: 1400px;
-    width: 95%;
+    max-width: 1200px;
+    width: 90%;
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 50px;
 }
 
-/* Left Column: Phone & Badges */
+/* Left Column: Phone & Badges (35%) */
 .feature-image-col {
-    flex: 1.4;
+    flex: 35;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 20px;
 }
 
+/* Right Column: Content (65%) */
 .feature-content-col {
-    flex: 1;
+    flex: 65;
 }
 
 .phone-mockup {
