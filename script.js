@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateGlider(button);
 
         // Scroll to corresponding position if clicked manually
-        if (shouldScroll && window.innerWidth > 768) {
+        if (shouldScroll) {
             const featuresSection = document.querySelector('.features.sticky-scroll-enabled');
             if (featuresSection) {
                 const sectionTop = featuresSection.offsetTop;
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         featuresSection.classList.add('sticky-scroll-enabled');
 
         function handleStickyScroll() {
-            if (window.innerWidth <= 768 || isManualClickScrolling) return;
+            if (isManualClickScrolling) return;
 
             const rect = featuresSection.getBoundingClientRect();
             const totalScrollable = featuresSection.offsetHeight - window.innerHeight;
