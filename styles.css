@@ -352,6 +352,25 @@ ul {
     transition: background-color 0.5s ease;
 }
 
+@media (min-width: 769px) {
+    .features.sticky-scroll-enabled {
+        position: relative;
+        height: 280vh;
+        padding: 0;
+    }
+
+    .features.sticky-scroll-enabled .feature-container {
+        position: sticky;
+        top: 90px;
+        height: calc(100vh - 90px);
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+        padding: 20px 0;
+        box-sizing: border-box;
+    }
+}
+
 /* Dynamic Object Configuration using CSS Variables based on class */
 .features.theme-blue {
     --current-theme: #2563eb;
@@ -615,12 +634,12 @@ ul {
 }
 
 .title-logo-banner {
-    height: 98px;
+    height: 135px;
     max-width: 100%;
     width: auto;
     object-fit: contain;
     display: block;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
 }
 
 .section-desc {
@@ -1147,57 +1166,81 @@ ul {
 }
 
 /* Partners */
+/* Partners / Brands Slider Marquee */
 .partners {
-    padding: 60px 0;
+    padding: 60px 0 70px 0;
     text-align: center;
     background-color: #ffffff;
+    overflow: hidden;
 }
 
 .partners p {
-    color: var(--text-gray);
-    margin-bottom: 40px;
-    font-size: 1.1rem;
-    font-weight: 500;
+    color: #6b7280;
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
 }
 
-.logos-grid {
+.marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 15px 0;
+    mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+
+.marquee-track {
     display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    align-items: center;
+    gap: 22px;
+    width: max-content;
+    animation: scrollRight 35s linear infinite;
 }
 
-.logo-box {
-    background: white;
-    width: 200px;
-    /* Fixed uniform width */
-    height: 100px;
-    /* Fixed uniform height */
-    border-radius: 20px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
-    border: 1px solid #f3f4f6;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.marquee-wrapper:hover .marquee-track {
+    animation-play-state: paused;
 }
 
-.logo-box:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+.partners .logo-box {
+    background: #ffffff !important;
+    width: 220px !important;
+    height: 105px !important;
+    flex-shrink: 0 !important;
+    border-radius: 22px !important;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid rgba(0, 0, 0, 0.03) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 16px !important;
+    box-sizing: border-box !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
-.logo-box img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    filter: grayscale(0%);
-    /* Keep color as per generated images */
+.partners .logo-box:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08) !important;
 }
 
-/* ... existing partner styles if any ... */
+.partners .logo-box img {
+    max-width: 80% !important;
+    max-height: 55px !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: 0 auto !important;
+}
+
+@keyframes scrollRight {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
 
 /* Testimonial Modal */
 .modal-overlay {
@@ -1725,15 +1768,9 @@ ul {
         align-items: center;
     }
 
-    /* Show Phone Header Badge on Mobile Only */
+    /* Hide Phone Header Badge on Mobile */
     .phone-header-badge {
-        display: flex !important;
-        flex-direction: column;
-        align-items: center;
-        gap: 6px;
-        margin-bottom: 10px;
-        text-align: center;
-        width: 100%;
+        display: none !important;
     }
 
     .badge-main-logo {
@@ -1986,29 +2023,33 @@ ul {
     }
 
     /* Partners */
+    .partners {
+        padding: 40px 0 45px 0 !important;
+    }
+
     .partners p {
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: #2563eb;
-        margin-bottom: 20px;
+        font-size: 1.05rem !important;
+        font-weight: 600 !important;
+        color: #6b7280 !important;
+        margin-bottom: 20px !important;
     }
 
-    .logos-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-        opacity: 1;
+    .marquee-track {
+        gap: 14px !important;
     }
 
-    .logo-box {
-        width: 100%;
-        height: 80px;
-        border-radius: 14px;
-        padding: 10px;
+    .partners .logo-box {
+        width: 155px !important;
+        height: 75px !important;
+        border-radius: 16px !important;
+        padding: 8px !important;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05) !important;
     }
 
-    .logo-box img {
-        max-height: 45px;
+    .partners .logo-box img {
+        max-height: 42px !important;
+        max-width: 80% !important;
+        object-fit: contain !important;
     }
 
     /* Contact Section Mobile */

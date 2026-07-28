@@ -134,56 +134,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Progression on reaching end of active tab text (down and up)
     function handleTabScrollProgression() {
-        if (isAutoTabScrolling) return;
-
-        const currentScrollY = window.scrollY;
-        const delta = currentScrollY - lastScrollY;
-        lastScrollY = currentScrollY;
-
-        if (Math.abs(delta) < 3) return;
-
-        const isScrollingDown = delta > 0;
-        const isScrollingUp = delta < 0;
-
         const featuresSec = document.getElementById('funcionalidades') || document.querySelector('.features');
         if (!featuresSec) return;
 
-        const featuresRect = featuresSec.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
+        const isSticky = featuresSec.classList.contains('sticky-scroll-enabled') && window.innerWidth > 768;
 
-        // Only operate when features section is visible in screen
-        if (featuresRect.bottom < 150 || featuresRect.top > windowHeight - 150) return;
+        if (isSticky) {
+            // Natural sticky progress-based tab switching (No page jumps)
+            const rect = featuresSec.getBoundingClientRect();
+            const sectionHeight = featuresSec.offsetHeight;
+            const windowHeight = window.innerHeight;
 
-        const activePane = document.querySelector('.tab-pane.active');
-        if (!activePane) return;
+            const headerOffset = 90;
+            const totalScrollable = sectionHeight - windowHeight + headerOffset;
 
-        const featureItems = activePane.querySelectorAll('.feature-item');
-        if (featureItems.length === 0) return;
+            if (totalScrollable <= 0) return;
 
-        const activeBtn = document.querySelector('.tab-btn.active');
-        const currentIndex = Array.from(tabButtons).indexOf(activeBtn);
+            const currentScroll = headerOffset - rect.top;
+            const progress = Math.max(0, Math.min(1, currentScroll / totalScrollable));
 
-        if (isScrollingDown && currentIndex < tabButtons.length - 1) {
-            const lastItem = featureItems[featureItems.length - 1];
-            const rect = lastItem.getBoundingClientRect();
-
-            // Trigger when user scrolls DOWN past the last text card (card bottom reaches upper 45% of viewport)
-            if (rect.bottom <= windowHeight * 0.45) {
-                const nextIndex = currentIndex + 1;
-                switchTab(nextIndex, false);
-                currentActiveTab = nextIndex;
-                scrollToVideoTop();
+            let targetIndex = 0;
+            if (progress > 0.66) {
+                targetIndex = 2;
+            } else if (progress > 0.33) {
+                targetIndex = 1;
+            } else {
+                targetIndex = 0;
             }
-        } else if (isScrollingUp && currentIndex > 0) {
-            const firstItem = featureItems[0];
-            const rect = firstItem.getBoundingClientRect();
 
-            // Trigger when user scrolls UP past the first text card (card top moves down to lower 55% of viewport)
-            if (rect.top >= windowHeight * 0.55) {
-                const prevIndex = currentIndex - 1;
-                switchTab(prevIndex, false);
-                currentActiveTab = prevIndex;
-                scrollToVideoTop();
+            if (targetIndex !== currentActiveTab) {
+                currentActiveTab = targetIndex;
+                switchTab(targetIndex, false);
             }
         }
     }
