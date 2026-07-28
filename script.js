@@ -30,8 +30,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    let isManualClickScrolling = false;
+    let isAutoTabScrolling = false;
     let currentActiveTab = 0;
+    let lastScrollY = window.scrollY;
+
+    function scrollToVideoTop() {
+        const videoElement = document.querySelector('.phone-mockup') || document.querySelector('.features');
+        if (!videoElement) return;
+
+        const navHeader = document.querySelector('.header');
+        const headerOffset = navHeader ? navHeader.offsetHeight + 20 : 85;
+        const targetY = Math.max(0, window.pageYOffset + videoElement.getBoundingClientRect().top - headerOffset);
+
+        isAutoTabScrolling = true;
+        window.scrollTo({
+            top: targetY,
+            behavior: 'smooth'
+        });
+
+        setTimeout(() => {
+            isAutoTabScrolling = false;
+            lastScrollY = window.scrollY;
+        }, 850);
+    }
 
     function switchTab(index, shouldScroll = false) {
         if (index < 0 || index >= tabButtons.length) return;
@@ -68,6 +89,22 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update Store download links for active tab
         updateStoreLinks(targetId);
 
+        // Update Phone Header Badge above mockup
+        const badgeLogo = document.getElementById('badge-logo-img');
+        const badgeTitle = document.getElementById('badge-title');
+        const badgeSubtitle = document.getElementById('badge-subtitle');
+        const badgeData = {
+            distribuidores: { logo: 'Logo1.jpg', title: 'PICKING UP! TIENDA', subtitle: 'PARA COMERCIANTES' },
+            consumidores: { logo: 'Logo2.jpg', title: 'PICKING UP!', subtitle: 'PARA CONSUMIDORES' },
+            repartidores: { logo: 'Logo3.jpg', title: 'PICKING UP! REPARTIENDO', subtitle: 'PARA REPARTIDORES' }
+        };
+
+        if (badgeData[targetId]) {
+            if (badgeLogo) badgeLogo.src = badgeData[targetId].logo;
+            if (badgeTitle) badgeTitle.textContent = badgeData[targetId].title;
+            if (badgeSubtitle) badgeSubtitle.textContent = badgeData[targetId].subtitle;
+        }
+
         // Update Theme on parent .features section
         const theme = button.getAttribute('data-theme');
         const featuresSection = document.querySelector('.features');
@@ -79,18 +116,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update Glider Position
         updateGlider(button);
 
-        // Scroll to corresponding position if clicked manually
+        // Scroll to top of features section if requested
         if (shouldScroll) {
-            const featuresSection = document.querySelector('.features.sticky-scroll-enabled');
-            if (featuresSection) {
-                const sectionTop = featuresSection.offsetTop;
-                const totalScrollable = featuresSection.offsetHeight - window.innerHeight;
-                const targetY = sectionTop + (index / (tabButtons.length - 1)) * totalScrollable;
-
-                isManualClickScrolling = true;
-                window.scrollTo({ top: targetY, behavior: 'smooth' });
-                setTimeout(() => { isManualClickScrolling = false; }, 800);
-            }
+            scrollToVideoTop();
         }
     }
 
@@ -101,45 +129,66 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Initialize Store Links for active tab
+    // Initialize Store Links & Badge for active tab
     updateStoreLinks('distribuidores');
 
-    // Scroll-Driven Tab Progression Logic
-    const featuresSection = document.querySelector('.features');
-    if (featuresSection) {
-        featuresSection.classList.add('sticky-scroll-enabled');
+    // Progression on reaching end of active tab text (down and up)
+    function handleTabScrollProgression() {
+        if (isAutoTabScrolling) return;
 
-        function handleStickyScroll() {
-            if (isManualClickScrolling) return;
+        const currentScrollY = window.scrollY;
+        const delta = currentScrollY - lastScrollY;
+        lastScrollY = currentScrollY;
 
-            const rect = featuresSection.getBoundingClientRect();
-            const totalScrollable = featuresSection.offsetHeight - window.innerHeight;
+        if (Math.abs(delta) < 3) return;
 
-            if (totalScrollable <= 0) return;
+        const isScrollingDown = delta > 0;
+        const isScrollingUp = delta < 0;
 
-            const scrolled = -rect.top;
+        const featuresSec = document.getElementById('funcionalidades') || document.querySelector('.features');
+        if (!featuresSec) return;
 
-            if (scrolled >= 0 && scrolled <= totalScrollable) {
-                const progress = scrolled / totalScrollable;
-                let targetIndex = 0;
+        const featuresRect = featuresSec.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
 
-                if (progress >= 0.66) {
-                    targetIndex = 2;
-                } else if (progress >= 0.33) {
-                    targetIndex = 1;
-                } else {
-                    targetIndex = 0;
-                }
+        // Only operate when features section is visible in screen
+        if (featuresRect.bottom < 150 || featuresRect.top > windowHeight - 150) return;
 
-                if (targetIndex !== currentActiveTab) {
-                    currentActiveTab = targetIndex;
-                    switchTab(currentActiveTab, false);
-                }
+        const activePane = document.querySelector('.tab-pane.active');
+        if (!activePane) return;
+
+        const featureItems = activePane.querySelectorAll('.feature-item');
+        if (featureItems.length === 0) return;
+
+        const activeBtn = document.querySelector('.tab-btn.active');
+        const currentIndex = Array.from(tabButtons).indexOf(activeBtn);
+
+        if (isScrollingDown && currentIndex < tabButtons.length - 1) {
+            const lastItem = featureItems[featureItems.length - 1];
+            const rect = lastItem.getBoundingClientRect();
+
+            // Trigger when user scrolls DOWN past the last text card (card bottom reaches upper 45% of viewport)
+            if (rect.bottom <= windowHeight * 0.45) {
+                const nextIndex = currentIndex + 1;
+                switchTab(nextIndex, false);
+                currentActiveTab = nextIndex;
+                scrollToVideoTop();
+            }
+        } else if (isScrollingUp && currentIndex > 0) {
+            const firstItem = featureItems[0];
+            const rect = firstItem.getBoundingClientRect();
+
+            // Trigger when user scrolls UP past the first text card (card top moves down to lower 55% of viewport)
+            if (rect.top >= windowHeight * 0.55) {
+                const prevIndex = currentIndex - 1;
+                switchTab(prevIndex, false);
+                currentActiveTab = prevIndex;
+                scrollToVideoTop();
             }
         }
-
-        window.addEventListener('scroll', handleStickyScroll, { passive: true });
     }
+
+    window.addEventListener('scroll', handleTabScrollProgression, { passive: true });
 
     // Glider Logic
     const glider = document.querySelector('.tab-glider');

@@ -40,18 +40,17 @@
     <!-- Hero Section with Background Image -->
     <section id="inicio" class="hero fullscreen-hero">
         <div class="hero-slideshow">
-            <div class="slide active" style="background-image: url('hero1.png');"></div>
-            <div class="slide" style="background-image: url('hero2.png');"></div>
-            <div class="slide" style="background-image: url('hero3.png');"></div>
+            <div class="slide slide-1 active"></div>
+            <div class="slide slide-2"></div>
+            <div class="slide slide-3"></div>
         </div>
         <div class="hero-overlay"></div> <!-- Separate overlay for consistent readability -->
 
         <div class="container hero-content">
             <div class="hero-text full-width-text slide-up delay-100">
-                <h1>Todo el comercio de tu barrio,<br>en una sola plataforma.</h1>
+                <h1>TODO EL COMERCIO DE TU BARRIO,<br>EN UNA SOLA PLATAFORMA.</h1>
                 <p>Tres aplicaciones integradas que permiten vender, comprar y repartir sin intermediarios.</p>
-                <a href="#funcionalidades" class="btn-primary hero-btn scale-in delay-200">Conocé el ecosistema de
-                    Picking Up</a>
+                <a href="#funcionalidades" class="btn-primary hero-btn scale-in delay-200">Conocé Picking up!</a>
             </div>
         </div>
     </section>
@@ -61,6 +60,14 @@
         <div class="container feature-container">
             <!-- Left Side: Phone Mockup -->
             <div class="feature-image-col slide-up delay-200">
+                <!-- Header Badge above Phone Mockup (Mobile Only) -->
+                <div class="phone-header-badge" id="phone-header-badge">
+                    <div class="badge-top-row">
+                        <img src="Logo1.jpg" alt="Logo" id="badge-logo-img" class="badge-logo-img">
+                        <span class="badge-title" id="badge-title">PICKING UP! TIENDA</span>
+                    </div>
+                    <span class="badge-subtitle" id="badge-subtitle">PARA COMERCIANTES</span>
+                </div>
                 <div class="phone-mockup">
                     <!-- Video / Media para Comerciantes -->
                     <video id="media-distribuidores" class="tab-media phone-img-element active" autoplay loop muted playsinline>
@@ -80,18 +87,18 @@
                 </div>
                 <!-- Download Badges -->
                 <div class="download-badges">
-                    <a href="https://tienda.pickingup.com.ar" target="_blank" rel="noopener noreferrer" class="store-badge" id="btn-google-play">
-                        <span class="icon"><img src="googleplay.webp" alt="Google Play" class="store-badge-img"></span>
-                        <div class="text">
-                            <span class="small">Disponible en</span>
-                            <span class="large">Google Play</span>
-                        </div>
-                    </a>
                     <a href="https://tienda.pickingup.com.ar" target="_blank" rel="noopener noreferrer" class="store-badge" id="btn-app-store">
                         <span class="icon"><img src="apple.png" alt="App Store" class="store-badge-img"></span>
                         <div class="text">
                             <span class="small">Disponible en</span>
                             <span class="large">App Store</span>
+                        </div>
+                    </a>
+                    <a href="https://tienda.pickingup.com.ar" target="_blank" rel="noopener noreferrer" class="store-badge" id="btn-google-play">
+                        <span class="icon"><img src="googleplay.webp" alt="Google Play" class="store-badge-img"></span>
+                        <div class="text">
+                            <span class="small">Disponible en</span>
+                            <span class="large">Google Play</span>
                         </div>
                     </a>
                 </div>
@@ -113,8 +120,7 @@
                     <!-- Distribuidores Pane (Blue) -->
                     <div id="distribuidores" class="tab-pane active fade-in">
                         <h2 class="section-title">
-                            <img src="Logo1.jpg" alt="Logo Picking Up! Tienda" class="title-logo-img">
-                            PICKING UP! TIENDA
+                            <img src="logo5.png" alt="Picking Up! Tienda" class="title-logo-banner">
                         </h2>
                         <p class="section-desc">Tu propia herramienta digital para que empieces a vender más de forma
                             simple, desde tu celular y sin pagar comisiones.</p>
@@ -144,8 +150,7 @@
                     <!-- Consumidores Pane (Pink) -->
                     <div id="consumidores" class="tab-pane">
                         <h2 class="section-title">
-                            <img src="Logo2.jpg" alt="Logo Picking Up!" class="title-logo-img">
-                            PICKING UP!
+                            <img src="logo4.png" alt="Picking Up!" class="title-logo-banner">
                         </h2>
                         <p class="section-desc">Todos los comercios de tu barrio en una sola app. Encontrá negocios de
                             diferentes rubros y hacé tus compras con la opción de retirar tu pedido o recibirlo donde
@@ -176,8 +181,7 @@
                     <!-- Repartidores Pane (Green) -->
                     <div id="repartidores" class="tab-pane">
                         <h2 class="section-title">
-                            <img src="Logo3.jpg" alt="Logo Picking Up! Repartiendo" class="title-logo-img">
-                            PICKING UP! REPARTIENDO
+                            <img src="logo6.png" alt="Picking Up! Repartiendo" class="title-logo-banner">
                         </h2>
                         <p class="section-desc">Es la app para generar ingresos extra entregando pedidos para los
                             comercios de tu barrio.</p>
@@ -215,21 +219,21 @@
             <div class="metrics-grid">
                 <div class="metric-card fade-in delay-100">
                     <div class="metric-icon">🏪</div>
-                    <div class="metric-number">+1,5k</div>
+                    <div class="metric-number">+3 mil</div>
                     <h3>Comercios adheridos</h3>
                     <p>Negocios barriales como kioscos, almacenes, librerías, fiambrerías, etc. <em>ya forman parte de
                             Picking Up!</em></p>
                 </div>
                 <div class="metric-card">
                     <div class="metric-icon">👣</div>
-                    <div class="metric-number">+1500</div>
+                    <div class="metric-number">+2,5 mil</div>
                     <h3>Vecinos repartiendo</h3>
                     <p>Muchos vecinos ya comenzaron a repartir y cobrar en el momento. <em>¡Animate vos también!</em>
                     </p>
                 </div>
                 <div class="metric-card">
                     <div class="metric-icon">👥</div>
-                    <div class="metric-number">+3,5k</div>
+                    <div class="metric-number">+8 mil</div>
                     <h3>Usuarios en Picking Up!</h3>
                     <p>Picking Up! es parte del día a día de una gran cantidad de barrios. <em>¡Sumate!</em></p>
                 </div>
@@ -243,18 +247,29 @@
         <div class="container">
             <p>Empresas con las que trabajamos</p>
             <div class="logos-grid">
-                <!-- Logos -->
                 <div class="logo-box">
-                    <img src="partner1.png" alt="Partner 1">
+                    <img src="partner1.jpg" alt="Coca-Cola">
                 </div>
                 <div class="logo-box">
-                    <img src="partner2.png" alt="Partner 2">
+                    <img src="partner2.jpg" alt="Oreo">
                 </div>
                 <div class="logo-box">
-                    <img src="partner3.png" alt="Partner 3">
+                    <img src="partner3.png" alt="Don Satur">
                 </div>
                 <div class="logo-box">
-                    <img src="partner4.png" alt="Partner 4">
+                    <img src="partner4.png" alt="Monster">
+                </div>
+                <div class="logo-box">
+                    <img src="partner5.png" alt="KitKat">
+                </div>
+                <div class="logo-box">
+                    <img src="partner6.png" alt="Rasta">
+                </div>
+                <div class="logo-box">
+                    <img src="partner7.png" alt="Topline">
+                </div>
+                <div class="logo-box">
+                    <img src="partner8.png" alt="Pepsi">
                 </div>
             </div>
         </div>
