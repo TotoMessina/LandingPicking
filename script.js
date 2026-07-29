@@ -34,24 +34,37 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentActiveTab = 0;
     let lastScrollY = window.scrollY;
 
-    function scrollToVideoTop() {
-        const videoElement = document.querySelector('.phone-mockup') || document.querySelector('.features');
-        if (!videoElement) return;
+    function scrollToTabProgress(index) {
+        const featuresSec = document.getElementById('funcionalidades') || document.querySelector('.features');
+        if (!featuresSec) return;
 
         const navHeader = document.querySelector('.header');
-        const headerOffset = navHeader ? navHeader.offsetHeight + 20 : 85;
-        const targetY = Math.max(0, window.pageYOffset + videoElement.getBoundingClientRect().top - headerOffset);
+        const headerOffset = navHeader ? navHeader.offsetHeight + 15 : 90;
 
-        isAutoTabScrolling = true;
-        window.scrollTo({
-            top: targetY,
-            behavior: 'smooth'
-        });
+        const isSticky = featuresSec.classList.contains('sticky-scroll-enabled');
+        if (isSticky) {
+            const sectionHeight = featuresSec.offsetHeight;
+            const windowHeight = window.innerHeight;
+            const totalScrollable = sectionHeight - windowHeight + headerOffset;
 
-        setTimeout(() => {
-            isAutoTabScrolling = false;
-            lastScrollY = window.scrollY;
-        }, 850);
+            const progressTargets = [0.05, 0.50, 0.85];
+            const targetProgress = progressTargets[index] !== undefined ? progressTargets[index] : 0;
+
+            const featuresTop = window.pageYOffset + featuresSec.getBoundingClientRect().top - headerOffset;
+            const targetY = Math.max(0, featuresTop + totalScrollable * targetProgress);
+
+            window.scrollTo({
+                top: targetY,
+                behavior: 'smooth'
+            });
+        } else {
+            const videoElement = document.querySelector('.phone-mockup') || featuresSec;
+            const targetY = Math.max(0, window.pageYOffset + videoElement.getBoundingClientRect().top - headerOffset);
+            window.scrollTo({
+                top: targetY,
+                behavior: 'smooth'
+            });
+        }
     }
 
     function switchTab(index, shouldScroll = false) {
@@ -118,14 +131,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Scroll to top of features section if requested
         if (shouldScroll) {
-            scrollToVideoTop();
+            scrollToTabProgress(index);
         }
     }
 
     tabButtons.forEach((button, index) => {
-        button.addEventListener('click', () => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
             currentActiveTab = index;
-            switchTab(index, true);
+            switchTab(index, false);
+            scrollToTabProgress(index);
         });
     });
 
@@ -137,15 +152,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const featuresSec = document.getElementById('funcionalidades') || document.querySelector('.features');
         if (!featuresSec) return;
 
-        const isSticky = featuresSec.classList.contains('sticky-scroll-enabled') && window.innerWidth > 768;
+        const isSticky = featuresSec.classList.contains('sticky-scroll-enabled');
 
         if (isSticky) {
-            // Natural sticky progress-based tab switching (No page jumps)
+            // Natural sticky progress-based tab switching for desktop and mobile
             const rect = featuresSec.getBoundingClientRect();
             const sectionHeight = featuresSec.offsetHeight;
             const windowHeight = window.innerHeight;
 
-            const headerOffset = 90;
+            const headerOffset = window.innerWidth <= 768 ? 75 : 90;
             const totalScrollable = sectionHeight - windowHeight + headerOffset;
 
             if (totalScrollable <= 0) return;
