@@ -340,6 +340,67 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Video Modal Logic
+    const videoModal = document.getElementById('video-modal');
+    const videoModalClose = document.getElementById('video-modal-close');
+    const videoPlayer = document.getElementById('modal-video-player');
+    const videoSrc = document.getElementById('modal-video-src');
+    const videoBadge = document.getElementById('video-modal-badge');
+    const verMasButtons = document.querySelectorAll('.btn-ver-mas-video');
+
+    function closeVideoModal() {
+        if (videoModal) {
+            videoModal.classList.remove('active');
+        }
+        if (videoPlayer) {
+            videoPlayer.pause();
+        }
+    }
+
+    verMasButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const videoFile = btn.getAttribute('data-video');
+            const videoTitle = btn.getAttribute('data-title');
+
+            if (videoFile && videoPlayer && videoSrc) {
+                videoSrc.src = videoFile;
+                videoPlayer.load();
+                if (videoBadge && videoTitle) {
+                    videoBadge.textContent = videoTitle;
+                }
+                if (videoModal) {
+                    videoModal.classList.add('active');
+                }
+                videoPlayer.play().catch(() => {});
+            }
+        });
+    });
+
+    if (videoModalClose) {
+        videoModalClose.addEventListener('click', closeVideoModal);
+    }
+
+    if (videoModal) {
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                closeVideoModal();
+            }
+        });
+    }
+
+    // Close Modals on Escape Key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            if (modal && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+            }
+            if (videoModal && videoModal.classList.contains('active')) {
+                closeVideoModal();
+            }
+        }
+    });
+
     // Intersection Observer for Animations
     const observerOptions = {
         threshold: 0.15, // Trigger when 15% visible

@@ -767,9 +767,169 @@ ul {
     }
 }
 
+/* Category Pill Badge below Logo */
+.category-pill-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 2px 0 10px 0;
+}
+
+.category-pill {
+    display: inline-block;
+    padding: 5px 18px;
+    border-radius: 30px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: white;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+.category-pill.pill-blue {
+    background-color: #2563eb;
+}
+
+.category-pill.pill-pink {
+    background-color: #e11d48;
+}
+
+.category-pill.pill-green {
+    background-color: #10b981;
+}
+
+/* Ver Más Video Button (Text Link Style) Base */
+.ver-mas-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 0 20px 0;
+}
+
+.btn-ver-mas-video {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    color: var(--current-theme, #2563eb);
+    padding: 6px 0;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-decoration: underline;
+    border: none;
+    cursor: pointer;
+    box-shadow: none;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.btn-ver-mas-video:hover {
+    transform: translateX(4px);
+    opacity: 0.85;
+}
+
+.btn-ver-mas-video:active {
+    transform: scale(0.98);
+}
+
+.btn-ver-mas-video svg {
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+
+.btn-ver-mas-video:hover svg {
+    transform: scale(1.15);
+}
+
+/* Video Modal Styling */
+.video-modal-box {
+    max-width: 380px;
+    width: 90%;
+    background: #0f172a;
+    color: white;
+    border-radius: 24px;
+    padding: 24px 18px 20px 18px;
+    position: relative;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: modalPopIn 0.3s ease-out;
+}
+
+@keyframes modalPopIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.video-modal-box .modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 2rem;
+    color: #94a3b8;
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+    z-index: 10;
+}
+
+.video-modal-box .modal-close:hover {
+    color: white;
+}
+
+.video-modal-header {
+    margin-bottom: 16px;
+    text-align: center;
+    width: 100%;
+}
+
+.video-modal-badge {
+    background: var(--current-theme, #2563eb);
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 6px 20px;
+    border-radius: 30px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    display: inline-block;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.video-modal-body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.video-phone-frame {
+    width: 100%;
+    max-width: 280px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+    background: #000;
+    border: 3px solid #334155;
+}
+
+.video-phone-frame video {
+    width: 100%;
+    height: auto;
+    max-height: 65vh;
+    display: block;
+    object-fit: contain;
+    border-radius: 16px;
+}
 
 
-/* Pricing Section */
 .pricing {
     padding: 100px 0;
     background-color: white;
@@ -1812,51 +1972,86 @@ ul {
         align-items: center;
     }
 
-    /* Hide Phone Header Badge on Mobile */
+    /* Hide Phone Image Col & Video on Mobile */
+    .feature-image-col,
     .phone-header-badge,
     .phone-store-badges,
-    .feature-image-col .download-badges {
+    .feature-image-col .download-badges,
+    .phone-mockup {
         display: none !important;
     }
 
-    .phone-mockup {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 4px;
+    .features.sticky-scroll-enabled .feature-container,
+    .feature-container {
+        position: sticky !important;
+        top: 65px !important;
+        height: calc(100vh - 70px) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 6px !important;
+        padding: 10px 14px 15px 14px !important;
+        box-sizing: border-box !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
     }
 
-    .phone-img-element {
-        width: 195px !important;
-        max-width: 65% !important;
+    .tabs-content {
         height: auto !important;
-        max-height: 230px !important;
-        border-radius: 0 !important;
-        object-fit: contain !important;
-        filter: none !important;
+        min-height: 0 !important;
+        width: 100% !important;
+    }
+
+    .ver-mas-wrapper {
+        display: flex !important;
+        justify-content: center !important;
+        margin: 14px auto 6px auto !important;
+        width: 100% !important;
+    }
+
+    .btn-ver-mas-video {
+        width: auto !important;
+        max-width: 100% !important;
+        justify-content: center !important;
+        background: transparent !important;
+        color: var(--current-theme, #2563eb) !important;
+        padding: 6px 12px !important;
+        font-size: 1.05rem !important;
+        font-weight: 700 !important;
+        text-decoration: underline !important;
         box-shadow: none !important;
-        animation: float 6s ease-in-out infinite;
+        border: none !important;
     }
 
     .feature-content-col {
         width: 100%;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
     }
 
     .section-title {
         font-size: 1.3rem !important;
         height: auto !important;
         gap: 6px;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
         margin-bottom: 4px !important;
         justify-content: center;
         text-align: center;
+        width: 100% !important;
     }
 
     .title-logo-banner {
-        height: 85px !important;
-        max-height: 85px !important;
-        margin: 0 auto 8px auto !important;
+        height: 105px !important;
+        max-height: 105px !important;
+        margin: 0 auto 4px auto !important;
         display: block;
-        max-width: 90% !important;
+        max-width: 95% !important;
         object-fit: contain;
     }
 
@@ -1864,7 +2059,7 @@ ul {
         font-size: 0.88rem !important;
         height: auto !important;
         min-height: 0 !important;
-        margin-bottom: 10px !important;
+        margin-bottom: 12px !important;
         line-height: 1.35 !important;
         text-align: center;
         max-width: 100%;
@@ -1886,25 +2081,28 @@ ul {
     .feature-row {
         display: flex !important;
         flex-direction: column !important;
-        gap: 8px !important;
+        gap: 10px !important;
         width: 100% !important;
         height: auto !important;
+        align-items: center !important;
     }
 
     .feature-item {
         display: flex !important;
         flex-direction: row !important;
-        align-items: flex-start !important;
+        align-items: center !important;
         text-align: left !important;
-        gap: 12px !important;
+        gap: 14px !important;
         background: #ffffff !important;
-        padding: 10px 14px !important;
-        border-radius: 14px !important;
+        padding: 11px 15px !important;
+        border-radius: 16px !important;
         box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04) !important;
         border: 1px solid #e5e7eb !important;
         height: auto !important;
         min-height: 0 !important;
         box-sizing: border-box !important;
+        width: 100% !important;
+        max-width: 480px !important;
     }
 
     .icon-circle {
@@ -1915,6 +2113,14 @@ ul {
         flex-shrink: 0 !important;
         border-radius: 50% !important;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    .feature-text {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+        flex: 1 !important;
     }
 
     .feature-item h3 {
